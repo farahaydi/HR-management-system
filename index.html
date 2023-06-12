@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./Assest/style.css">
+    <script src="https://kit.fontawesome.com/f2e1c560d8.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./Assest/style.css">
 </head>
 <body>
     <header>
@@ -22,18 +23,74 @@
     </header>
    
 
+
+    <main>
+
+      <div class="container">
+        <form id="form">
+          <label for="fname">Full Name </label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name.." class="abt-txt">
+
+          <div>
+            <label for="Department">Department </label>
+          </div>
+          <div>
+          <select name="Department" id="dep" class="select">
+              <option value="Administration">Administration</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Development">Development</option>
+              <option value="Finance">Finance</option>
+          </select>
+          </div>
+
+          <div>
+            <label for="Level">Level </label>
+          </div>
+          <div>
+            <select name="Level" id="lvl" class="select">
+              <option value="Junior">Junior</option>
+              <option value="Mid-Senior">Mid-Senior</option>
+              <option value="Senior">Senior</option>
+            </select>
+            </div>
+      
+            <label for="img">Image URL</label><br>
+            <input type="text" id="img" value="" class="abt-txt"><br>
+
+          <input type="submit" value="Submit" class="submit">
+        </form>
+    </div>
+
+
+    <div class="flip-card">
+      <div class="flip-card-inner" id="flip">
+        <div class="flip-card-front" id="firstFlip">  
+        </div>
+        <div class="flip-card-back" id="secundFlip">
+        </div>
+      </div>
+    </div>
+
+    </main>
+
+    
+
     <script src="./app.js"></script>
     <footer class="footer">
         <hr>
         
         <div class="sm">
            <ul class="ul">
-            <i>IG:<a href="https://www.instagram.com/accounts/onetap/?next=%2F" class="a">farah_aydii</a></i>
-            <li>FB: <a href="https://web.facebook.com/" class="a">Farah Elaydi</a> </li>
-            <li>LI:<a href="https://www.linkedin.com/feed/" class="a">Farah Elaydi</a></li>
+            <a href="https://www.instagram.com/" class="ul"></a><i class="fa-brands fa-instagram"></i>        
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" class="ul"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://twitter.com/home" class="ul"><i class="fa-brands fa-square-twitter"></i></a>
+            
            </ul>
+           <hr class="hr">
         </div>
-        <p>&copy; Created by Farah Elaydi. 2023 </p>
+        <div class="copy"><p><i class="fa-regular fa-copyright"></i> Created by Farah Elaydi. 2023 </p></div>
+        
     </footer>
+
 </body>
 </html>

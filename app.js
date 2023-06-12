@@ -4,8 +4,16 @@ const departmentArray = ["Administration", "Marketing","Development", "Finance"]
 const levelArray = ["Junior","Mid-Senior","Senior"];
 
 const allEmployee =[]
+let form = document.getElementById("form");
 
-function Employee (employeeId,fullName,department, level, imageUrl)
+let secEle = document.getElementById("secTag");
+let firstFlip = document.getElementById("firstFlip");
+let secundFlip = document.getElementById("secundFlip");
+let flip = document.getElementById("flip");
+
+let sos;
+
+function Employee (employeeId,fullName,department, level, imageUrl ,salary)
 {
     this.employeeId =employeeId;
     this.fullName = fullName;
@@ -41,69 +49,101 @@ function Employee (employeeId,fullName,department, level, imageUrl)
 }
 
 let emp01=new Employee (1000,"Ghazi Samer","Administration","Senior","./Assest/img/boy1.jpg");
-let emp02=new Employee (1001,"Lana Ali","Finance","Senior","./Assest/img/girl1.jpg");
-let emp03=new Employee (1002,"Tamara Ayoub","Marketing","Senior","./Assest/img/girl2.jpg");
-let emp04=new Employee (1003,"Safi Walid","Administration","Mid-Senior","./Assest/img/man.png");
-let emp05=new Employee (1004,"Omar Zaid","Development","Senior","./Assest/img/mm.jpg");
-let emp06=new Employee (1005,"Rana Saleh","Development","Junior","./Assest/img/woman.png");
-let emp07=new Employee (1006,"Hadi Ahmad","Finance","Mid-Senior","./Assest/img/mn.jpg");
 
-Employee.prototype.generateRandomSalary = function (min ,max) 
-{
-    this.salary= Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(this.salary);
-    const taxAmount = (this.salary * 7.5) / 100;
-    this.salary=this.salary-taxAmount;
-    console.log(this.salary);
+const generateRandomNumber = function (min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
-let lvl;
-for (let index = 0; index < allEmployee.length; index++) 
+console.log(generateRandomNumber(600,5000));
+
+
+function generateUniqueId() 
 {
-    lvl=allEmployee[index].level;   
-    if (lvl == "Junior") 
-    {
-        allEmployee[index].generateRandomSalary(500, 1000);
-    } 
-    else if (lvl == "Mid-Senior") 
-    {
-        allEmployee[index].generateRandomSalary(1000, 1500);
-    } 
-    else if (lvl == "Senior") 
-    {
-        allEmployee[index].generateRandomSalary(1500, 2000);
-    } 
-    else 
-    {
-        document.write(`<h2>Hey ${allEmployee[index].fullName} Please Check Your Level !</h2>`);
+    let uniqueNumber = Math.floor(1000 + Math.random() * 9000); 
+    return uniqueNumber;
+}
+
+
+form.addEventListener("submit", submitHandler);
+
+
+let calculateSalary;
+function submitHandler(event) {
+    event.preventDefault();
+   const id =generateUniqueId();
+   const namee =event.target.fname.value;
+   const department = event.target.dep.value;
+   const level = event.target.lvl.value;
+   const img = event.target.img.value;
+
+   function sal(level)
+   {
+    let min, max;
+    let salary ;
+    if (level == "Junior") 
+        {
+            max = 1000;
+            min = 500;
+            salary = generateRandomNumber(max, min);
+            console.log(salary);
+            salary -= Math.floor(salary * .075);
+            console.log(salary);
+        } 
+        else if (level == "Mid-Senior") 
+        {
+            max = 1500;
+            min = 1000;
+            salary = generateRandomNumber(max, min);
+            console.log(salary);
+            salary -= Math.floor(salary * .075);
+            console.log(salary);
+        } 
+        else if (level == "Senior") 
+        {
+            max = 2000;
+            min = 1500;
+            salary = generateRandomNumber(max, min);
+            console.log(salary);
+            salary -= Math.floor(salary * .075);
+            console.log(salary);
+        }
+        console.log(salary);
+        return salary;
     }
+   
+    sos =sal(level);
 
+    console.log(sos);
+
+   let newEmp = new Employee(id,namee, department, level ,img, sos);
+   newEmp.renderData();
+   console.log(newEmp);
 }
 
-
-console.log(allEmployee);
-
-
-
-Employee.prototype.renderData = function () {
-    document.write(`<h1> Employee Name : ${this.fullName} </h1>`);
-    document.write(`<h3> Employee Salary : ${this.salary} </h3>`);
-}
-
-for (let i = 0; i < allEmployee.length; i++) 
+Employee.prototype.renderData = function () 
 {
-    document.write(`
-    <div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-    <h3 style="font-weight: bolder; color:#eee; font-size: ;">Employee Name : ${allEmployee[i].fullName}</h3> 
-    <h3 style="font-weight: bolder; color:#eee; padding-top:20px font-size: larger;">Employee Salary : ${allEmployee[i].salary}</h3> 
-    </div>
-    <div class="flip-card-back">
-    <img src="${allEmployee[i].imageUrl}" alt="Avatar" style="width:300px;height:300px;">
-    </div>
-  </div>
-</div>
-`)
-}
+    
 
+    let imgEle = document.createElement("img");
+    imgEle.src = this.imageUrl;
+    secundFlip.appendChild(imgEle);
+
+    let h3Ele = document.createElement("h1");
+    h3Ele.textContent = `Employee Name : ${this.fullName}  - ID : ${this.employeeId}`
+    firstFlip.appendChild(h3Ele);
+
+    let dep =document.createElement("h2");
+    dep.textContent=`Employee Department : ${this.department}`
+    firstFlip.appendChild(dep);
+
+    let sal =document.createElement("h2");
+    sal.textContent=`Employee Salary : ${sos}`
+    firstFlip.appendChild(sal);
+
+    let  lvl=document.createElement("h2");
+    lvl.textContent=`Employee Level : ${this.level}`
+    firstFlip.appendChild(lvl);
+
+    flip.append(firstFlip, secundFlip);
+
+}
