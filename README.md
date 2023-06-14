@@ -1,8 +1,15 @@
 # HR-management-system
+In this project, we will utilize Local Storage to access the data that we store. We will employ new methods as follows:
 
-In this project, we will be adding a form that allows users to enter data for employees. The form will collect information such as FullName, Department, Level, and Image. We will then use JavaScript and the DOM to dynamically create employee cards and display the entered data. Additionally, we will include the following features:
+> 1. JSON.parse():
 
->  1. Employee ID: We will generate a random 4-digit number using a specific function and display it on the employee card.
+This method converts a JSON string into an object array.
+> 2. JSON.stringify():
 
-> 2. Salary: We will generate a salary within a specific range and display it on the employee card.
+This method converts an object array into a JSON string.
+> 3. setItem():
 
+We will use this method to pass our data to Local Storage.
+> 4. getItem():
+
+We will use this method to retrieve our data from Local Storage.
