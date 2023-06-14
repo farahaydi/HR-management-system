@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/f2e1c560d8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./Assest/style.css">
 </head>
 <body>
@@ -24,17 +25,49 @@
     
 
 
-    <footer class="footer">
+    <table>
+        <thead>
+          <tr>
+            <th>Department Name</th>
+            <th>Number of Employees</th>
+            <th>Total Salary</th>
+            <th>Average Salary</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Department rows will be dynamically generated here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td class="total-emp"></td>
+            <td class="total-salary"></td>
+            <td class="total-avg"></td>
+          </tr>
+        </tfoot>
+      </table>      
+
+
+
+
+
+
+      <footer class="footer">
         <hr>
         
         <div class="sm">
            <ul class="ul">
-            <i>IG:<a href="https://www.instagram.com/accounts/onetap/?next=%2F" class="a">farah_aydii</a></i>
-            <li>FB: <a href="https://web.facebook.com/" class="a">Farah Elaydi</a> </li>
-            <li>LI:<a href="https://www.linkedin.com/feed/" class="a">Farah Elaydi</a></li>
+            <a href="https://www.instagram.com/" class="ul"></a><i class="fa-brands fa-instagram"></i>        
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" class="ul"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://twitter.com/home" class="ul"><i class="fa-brands fa-square-twitter"></i></a>
+            
            </ul>
+           <hr class="hr">
         </div>
-        <p>&copy; Created by Farah Elaydi. 2023 </p>
+        <div class="copy"><p><i class="fa-regular fa-copyright"></i> Created by Farah Elaydi. 2023 </p></div>
+        
     </footer>
+
+    <script src="./ accounting.js"></script>
 </body>
 </html>
